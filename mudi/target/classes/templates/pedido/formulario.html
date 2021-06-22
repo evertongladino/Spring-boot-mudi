@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head th:replace="~{base::head}"></head>
+	<body>
+		<div th:replace="~{base::logo}"></div>
+		<div class="container">
+			<div class="p-5 mb-3 bg-light rounded-3">
+		    	<div th:replace="~{base::titulo('Novo Pedido')}"></div>
+	   		</div>
+	   		<div class="card">
+		   		<form th:object="${reqNovoPedido}" class="card-body" action="/pedido/novo" method="POST">
+		   			<div class="form-group">
+		   				<label class="form-label" for="nomeProduto">Produto</label>
+		   				<input th:field="*{nomeProduto}" th:errorclass="is-invalid" class="form-control" placeholder="Nome do Produto"/>
+		   				<small>Informe o nome do produto.</small>
+		   				<div th:errors="*{nomeProduto}" class="invalid-feedback">
+		   					Erros do nome do produto
+		   				</div>
+		   			</div>
+		   			<div class="form-group">
+		   				<label class="form-label" for="urlProduto">Url</label>
+		   				<input th:field="*{urlProduto}" th:errorclass="is-invalid" class="form-control" placeholder="http://produto.com/url"/>
+		   				<small>Informe a url do produto.</small>
+		   				<div th:errors="*{urlProduto}" class="invalid-feedback">
+		   					Erros de url do produto
+		   				</div>
+		   			</div>
+		   			<div class="form-group">
+		   				<label class="form-label" for="urlImagem">Imagem</label>
+		   				<input th:field="*{urlImagem}" th:errorclass="is-invalid" class="form-control" placeholder="Url da Imagem"/>
+		   				<small>Informe a url da imagem.</small>
+		   				<div th:errors="*{urlImagem}" class="invalid-feedback">
+		   					Erros da url da imagem
+		   				</div>
+		   			</div>
+					<div class="form-group mb-3">
+					  <label for="descricao" class="form-label">Descrição</label>
+					  <textarea th:field="*{descricao}" class="form-control" placeholder="Descrição do Produto"></textarea>
+					</div>
+					<div class="d-flex justify-content-between">
+						<button type="submit" class="btn btn-primary mb-3">Confirmar</button>
+						<a href="/home" class="btn btn-primary mb-3">Voltar</a>
+					</div>
+					
+		   		</form>
+	   		</div>
+	   	</div>
+	</body>
+</html>
+   		 
